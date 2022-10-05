@@ -6,6 +6,7 @@ import io.namoosori.travelclub.spring.service.sdo.TravelClubCdo;
 import io.namoosori.travelclub.spring.shared.NameValueList;
 import io.namoosori.travelclub.spring.store.ClubStore;
 import io.namoosori.travelclub.spring.store.mapstore.ClubMapStore;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 public class ClubServiceLogic implements ClubService {
 
     private ClubStore clubStore;  // ClubStore 인터페이스 타입의 필드(변수) 선언.
-
+    // 아마 @Autowired 써도 되는듯 하다?
     public ClubServiceLogic(ClubStore clubStore) {  // ClubServiceLogic 은 ClubMapStore 을 알아야하는 관계이기때문에 이렇게 적어준다.
         this.clubStore = clubStore;
         // 아마 이렇게 적은 이유는, ClubServiceLogic과 ClubMapStore은 ClubStore 인터페이스를 사이에 두고 느슨한 결합을 유지해야하기때문에, DI에 ClubStore 인터페이스를 사용한것같다.
