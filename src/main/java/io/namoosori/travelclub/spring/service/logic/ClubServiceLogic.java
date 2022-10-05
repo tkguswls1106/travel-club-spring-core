@@ -6,9 +6,11 @@ import io.namoosori.travelclub.spring.service.sdo.TravelClubCdo;
 import io.namoosori.travelclub.spring.shared.NameValueList;
 import io.namoosori.travelclub.spring.store.ClubStore;
 import io.namoosori.travelclub.spring.store.mapstore.ClubMapStore;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ClubServiceLogic implements ClubService {
 
     private ClubStore clubStore;  // ClubStore 인터페이스 타입의 필드(변수) 선언.

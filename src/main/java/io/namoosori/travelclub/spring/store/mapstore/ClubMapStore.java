@@ -2,6 +2,7 @@ package io.namoosori.travelclub.spring.store.mapstore;
 
 import io.namoosori.travelclub.spring.aggregate.club.TravelClub;
 import io.namoosori.travelclub.spring.store.ClubStore;
+import org.springframework.stereotype.Repository;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Repository
 public class ClubMapStore implements ClubStore {  // 엔티티 layer(계층)에서의 TravelClub 클래스 클럽정보를 저장할 저장소 구현 (ClubStore 인터페이스로 구현함)
 
     private Map<String, TravelClub> clubMap;  // 키 자료형: String, 값 자료형: TravelClub  // 키: 객체의id(clubId), 값: club객체(club)
