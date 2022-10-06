@@ -65,7 +65,7 @@ public class TravelClub extends Entity {
 		}
 	}
 
-	public void modifyValues(NameValueList nameValues) {
+	public void modifyValues(NameValueList nameValues) {  // 객체 필드 내부값 수정 메소드를 호출하여, 데이터베이스가 아닌 먼저 객체의 정보를 수정해준다.
 		//
 		for (NameValue nameValue : nameValues.getNameValues()) {
 			String value = nameValue.getValue();
