@@ -1,11 +1,13 @@
 package io.namoosori.travelclub.spring;
 
+import io.namoosori.travelclub.spring.aggregate.club.TravelClub;
 import io.namoosori.travelclub.spring.service.ClubService;
 import io.namoosori.travelclub.spring.service.sdo.TravelClubCdo;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
+import java.util.Date;
 
 public class TravelClubApp {
 
@@ -35,5 +37,28 @@ public class TravelClubApp {
         // [스토어 구조로 데이터베이스접근 과정] Store의 create 메소드로 Map에 저장후 해당 Club 정보를 데이터베이스에 저장하길 요청
         // 마지막 과정으로, Store의 create 메소드가 실행되고 id를 리턴return해줌. 그러면 그 id값을 clubId 변수에 할당함.
         System.out.println("Test에서 등록될 새로운 TravelClub의 ID : " + clubId);
+
+        // Test_findClubById 테스트 메소드
+        // Test_findClubById 메소드라도 registerClub 하는 과정까지는 동일하다.
+        TravelClub foundedClub = clubService.findClubById(clubId);  // registerClub으로 반환하여 할당한 clubId 값으로 findClubById로 검색하여, findClubById로 불러온 Club객체가 foundedClub 변수에 할당된다.
+        System.out.println("Club name : " + foundedClub.getName());
+        System.out.println("Club intro : " + foundedClub.getIntro());
+        System.out.println("Club foundationTime : " + new Date(foundedClub.getFoundationTime()));
     }
+
+
+//    void Test_findClubById() {
+//        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+//
+//        TravelClubCdo clubCdo = new TravelClubCdo("FirstTravelClub", "Test TravelClub");
+//        ClubService clubService = context.getBean("clubServiceLogic", ClubService.class);
+//        String clubId = clubService.registerClub(clubCdo);
+//        // Test_findClubById 메소드라도 registerClub 하는 과정까지는 동일하다.
+//
+//        TravelClub foundedClub = clubService.findClubById(clubId);  // registerClub으로 반환하여 할당한 clubId 값으로 findClubById로 검색하여, findClubById로 불러온 Club객체가 foundedClub 변수에 할당된다.
+//        System.out.println("Club name : " + foundedClub.getName());
+//        System.out.println("Club intro : " + foundedClub.getIntro());
+//        System.out.println("Club foundationTime : " + new Date(foundedClub.getFoundationTime()));
+//    }
+
 }
