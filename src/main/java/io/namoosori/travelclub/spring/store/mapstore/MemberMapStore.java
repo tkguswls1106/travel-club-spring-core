@@ -2,9 +2,11 @@ package io.namoosori.travelclub.spring.store.mapstore;
 
 import io.namoosori.travelclub.spring.aggregate.club.CommunityMember;
 import io.namoosori.travelclub.spring.store.MemberStore;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class MemberMapStore implements MemberStore {
 
     @Override
