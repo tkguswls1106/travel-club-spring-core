@@ -1,7 +1,10 @@
 package io.namoosori.travelclub.spring;
 
+import io.namoosori.travelclub.spring.aggregate.club.CommunityMember;
 import io.namoosori.travelclub.spring.aggregate.club.TravelClub;
 import io.namoosori.travelclub.spring.service.ClubService;
+import io.namoosori.travelclub.spring.service.MemberService;
+import io.namoosori.travelclub.spring.service.sdo.MemberCdo;
 import io.namoosori.travelclub.spring.service.sdo.TravelClubCdo;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,9 +17,11 @@ public class TravelClubApp {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
+        // Test_등록Bean목록출력 테스트 메소드
         String [] beanNames = context.getBeanDefinitionNames();
         System.out.println(Arrays.toString(beanNames));
 
+        // Test_registerClub 테스트 메소드
         TravelClubCdo clubCdo = new TravelClubCdo("FirstTravelClub", "Test TravelClub");
         // 이제 밑의코드줄부터 ClubService를 통해서 객체를 넘겨주어야한다.
         // ClubServiceLogic 클래스의 registerClub 메소드를 호출하기위해 Service 관련 Bean을 먼저 스프링컨테이너에서 찾아와야한다.
@@ -44,6 +49,19 @@ public class TravelClubApp {
         System.out.println("Club name : " + foundedClub.getName());
         System.out.println("Club intro : " + foundedClub.getIntro());
         System.out.println("Club foundationTime : " + new Date(foundedClub.getFoundationTime()));
+        // System.out.println(foundedClub.toString()); 도 가능하긴함.
+
+        // Test_registerMember 테스트 메소드
+        MemberCdo memberCdo = new MemberCdo("test@naver.com", "Kim", "Test nickName", "010-0000-0000", "2000.01.01");
+        MemberService memberService = context.getBean("memberServiceLogic", MemberService.class);  // getBean의 매개변수: ("등록해둔 Bean 이름", 찾아오는 타입)
+        String memberId = memberService.registerMember(memberCdo);
+        System.out.println("Test에서 등록될 새로운 CommunityMember의 ID : " + memberId);
+
+
+        // Test_findMemberById 테스트 메소드
+        // Test_findMemberById 메소드라도 registerMember 하는 과정까지는 동일하다.
+        CommunityMember foundedMember = memberService.findMemberById(memberId);
+        System.out.println(foundedMember.toString());
     }
 
 
