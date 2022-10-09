@@ -33,7 +33,8 @@ public class CommunityMember extends Entity {
 		super(id);
 	}
 
-	public CommunityMember(String email, String name, String phoneNumber) {
+	public CommunityMember(String email, String name, String phoneNumber) {  // 서비스 클래스에서 register할때 CommunityMember()안의 매개변수로는 email과 name과 phoneNum 관련만 넣어주면 된다.
+																			 // 나머지 필드인 nickName과 birthDay는 매개변수 목록에 없으므로, 나중에 서비스 클래스에서 register할때 get이 아닌, set으로 따로 저장해주어야한다.
 		//
 		this();
 		this.email = email;

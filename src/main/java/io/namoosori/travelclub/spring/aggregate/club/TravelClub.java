@@ -24,7 +24,7 @@ public class TravelClub extends Entity {
 		super(id);
 	}
 
-	public TravelClub(String name, String intro) {
+	public TravelClub(String name, String intro) {  // 서비스 클래스에서 register할때 TravelClub()안의 매개변수로는 name과 intro 관련만 넣어주면 된다.
 		//
 		super();
 		this.name = name;

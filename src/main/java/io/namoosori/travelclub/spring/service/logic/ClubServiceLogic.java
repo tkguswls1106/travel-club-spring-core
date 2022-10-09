@@ -26,7 +26,7 @@ public class ClubServiceLogic implements ClubService {
 
     @Override
     public String registerClub(TravelClubCdo club) {  // Club 등록 용도이다. 서비스는 스토어의 데이터베이스 접근 메소드를 호출해주는 중간 다리 역할이라는 사실을 잊지말자.
-        TravelClub newClub = new TravelClub(club.getName(), club.getIntro());
+        TravelClub newClub = new TravelClub(club.getName(), club.getIntro());  // TravelClub 클래스의 TravelClub(~) 메소드의 주석 설명을 다시 읽고오면 어떤걸 get으로 어떤걸 set으로 사용하여 저장해야하는지 알수있을것이다.
         newClub.checkValidation();  // 처음에 설정해둔 글자 길이 등등이 맞는지 확인하는 용도. 만약 틀리면 Club이 생성되지않게 한다.
         return clubStore.create(newClub);  // clubStore 객체는 ClubMapStore의 인스턴스이때문에 이렇게 create를 호출해서 데이터를 넘겨줘서 사용할것이다.  // 서비스 목적에 가장 부합한 스토어의 데이터베이스 접근 메소드 호출.
     }
