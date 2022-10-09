@@ -28,14 +28,17 @@ public class ClubMapStore implements ClubStore {  // 엔티티 layer(계층)에�
     @Override
     public TravelClub retrieve(String clubId) {  // id값으로 하나의 club객체를 찾는(검색하는) 용도이다.
         return clubMap.get(clubId);
-    }
+    }  // 주의사항: 이 메소드는 clubMap의 키값중 키인 id로 검색하기때문에 람다스트림이나 for문같은 반복문 없이 사용 가능하지만,
+       // 만약 clubMap의 키값중 값인 TravelClub의 필드정보로 검색해야하는 메소드라면 람다스트림이나 for문같은 반복문을 사용하여 검색해야한다.
 
     @Override
     public List<TravelClub> retrieveByName(String name) {  // name값으로, 동일한 이름의 club객체들까지를 모두 찾아 리스트로 묶어 반환해줌.
         return clubMap.values().stream()  // clubMap 키값에서 값인 club객체를 데이터를 반복문처럼 돌려 확인하겠다는 의미이다.
                 .filter(club -> club.getName().equals(name))  // 반복문으로 돌린 club 객체의 getName으로 갖고온 name이 retrieveByName(String name)의 name과 동일힐때 해당 객체를 반환해줌.
                 .collect(Collectors.toList());  // 반환된 club객체들을 모두 묶어 리스트형태로 만듦. 그렇게 만든 리스트를 최종적으로 반환함.
-    }
+    }  // 주의사항: 이 메소드는 clubMap의 키값중 값인 TravelClub의 필드정보로 검색해야하는 메소드이므로, 람다스트림이나 for문같은 반복문을 사용해야하며,
+       // 메소드 반환자료형이 List<TravelClub> 이므로, 중복허용하여 중복목록을 리스트로 묶어 반환해준다.
+       // 만약 중복허용이 아니라면 중복들을 리스트로 묶을필요가 없으므로, 메소드 반환자료형이 List<TravelClub>가 아닌, TravelClub 이었을것이다.
 
     @Override
     public void update(TravelClub club) {  // 업데이트(수정) 용도인데, 참고로 매개변수 TravelClub club 객체 정보는 업데이트 된 데이터로 넘어오는것이다.

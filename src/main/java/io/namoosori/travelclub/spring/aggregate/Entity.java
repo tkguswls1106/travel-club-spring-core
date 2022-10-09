@@ -13,7 +13,7 @@ public abstract class Entity {
 
 	protected Entity() {
 		//
-		this.id = UUID.randomUUID().toString();
+		this.id = UUID.randomUUID().toString();  // 이거때문에 id값이 일반적인 숫자 자료형이 아니라, 암호화된 복잡한 문자열처럼 문자열 자료형을 가진 id 값이 되는것이다.
 	}
 
 	protected Entity(String id) {
