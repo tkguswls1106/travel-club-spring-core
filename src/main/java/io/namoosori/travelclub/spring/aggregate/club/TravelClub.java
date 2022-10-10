@@ -1,5 +1,6 @@
 package io.namoosori.travelclub.spring.aggregate.club;
 
+import com.google.gson.Gson;
 import io.namoosori.travelclub.spring.aggregate.Entity;
 import io.namoosori.travelclub.spring.shared.NameValue;
 import io.namoosori.travelclub.spring.shared.NameValueList;
@@ -92,6 +93,7 @@ public class TravelClub extends Entity {
 
 	public static void main(String[] args) {
 		//
-		System.out.println(sample().toString());
+		// System.out.println(sample().toString());
+		System.out.println(new Gson().toJson(sample()));
 	}
 }

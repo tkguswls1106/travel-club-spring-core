@@ -15,6 +15,7 @@ import java.util.List;
 @Service
 public class ClubServiceLogic implements ClubService {
 
+    // ClubController --ClubService 인터페이스를 사이에 두고 느슨한 결합--> ClubServiceLogic --ClubStore 인터페이스를 사이에 두고 느슨한 결합--> ClubMapStore
     private ClubStore clubStore;  // ClubStore 인터페이스 타입의 필드(변수) 선언.
     // 아마 @Autowired 써도 되는듯 하다?
     public ClubServiceLogic(ClubStore clubStore) {  // ClubServiceLogic 은 ClubMapStore 을 알아야하는 관계이기때문에 이렇게 적어준다.
